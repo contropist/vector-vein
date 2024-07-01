@@ -348,7 +348,7 @@ const websiteDomainOptions = [
             <a-flex vertical justify="center" gap="middle">
               <a-alert message="text-embeddings-inference deployment" type="info">
                 <template #description>
-                  <a-typography-link style="text-align: center;"
+                  <a-typography-link style="text-align: center;" target="_blank"
                     href="https://github.com/huggingface/text-embeddings-inference">
                     https://github.com/huggingface/text-embeddings-inference
                   </a-typography-link>
@@ -375,6 +375,17 @@ const websiteDomainOptions = [
           </a-button>
         </template>
         <a-form :label-col="{ span: 8 }" :wrapper-col="{ span: 16 }">
+          <a-form-item :label="t('settings.microphone_device')">
+            <a-flex gap="small" align="center">
+              <a-select v-model:value="settingForm.data.microphone_device" :options="microphoneDeviceOptions"
+                style="width: 100%;" />
+              <a-tooltip :title="t('common.refresh')">
+                <a-button type=text size="small" :loading="refreshingMics" @click="refreshMics">
+                  <Refresh />
+                </a-button>
+              </a-tooltip>
+            </a-flex>
+          </a-form-item>
           <a-form-item :label="t('settings.provider_for_asr')">
             <a-select v-model:value="settingForm.data.asr.provider"
               :options="[{ label: 'OpenAI', value: 'openai' }, { label: 'Deepgram', value: 'deepgram' }]" />
@@ -408,7 +419,8 @@ const websiteDomainOptions = [
             <a-flex vertical justify="center" gap="middle">
               <a-alert message="Deepgram" type="info">
                 <template #description>
-                  <a-typography-link style="text-align: center;" href="https://developers.deepgram.com/docs">
+                  <a-typography-link style="text-align: center;" target="_blank"
+                    href="https://developers.deepgram.com/docs">
                     https://developers.deepgram.com/docs
                   </a-typography-link>
                 </template>
@@ -440,7 +452,7 @@ const websiteDomainOptions = [
             <a-flex vertical justify="center" gap="middle">
               <a-alert message="piper-tts deployment" type="info">
                 <template #description>
-                  <a-typography-link style="text-align: center;"
+                  <a-typography-link style="text-align: center;" target="_blank"
                     href="https://github.com/rhasspy/piper/blob/master/src/python_run/README_http.md">
                     https://github.com/rhasspy/piper/blob/master/src/python_run/README_http.md
                   </a-typography-link>
@@ -467,7 +479,7 @@ const websiteDomainOptions = [
             <a-flex vertical justify="center" gap="middle">
               <a-alert message="jina.ai" type="info">
                 <template #description>
-                  <a-typography-link style="text-align: center;" href="https://jina.ai/reader/">
+                  <a-typography-link style="text-align: center;" target="_blank" href="https://jina.ai/reader/">
                     https://jina.ai/reader/
                   </a-typography-link>
                 </template>
@@ -483,7 +495,7 @@ const websiteDomainOptions = [
             <a-flex vertical justify="center" gap="middle">
               <a-alert message="Bing search API" type="info">
                 <template #description>
-                  <a-typography-link style="text-align: center;"
+                  <a-typography-link style="text-align: center;" target="_blank"
                     href="https://www.microsoft.com/en-us/bing/apis/bing-web-search-api">
                     https://www.microsoft.com/en-us/bing/apis/bing-web-search-api
                   </a-typography-link>
@@ -563,18 +575,6 @@ const websiteDomainOptions = [
 
           <a-form-item :label="t('settings.use_system_proxy')">
             <a-checkbox v-model:checked="settingForm.data.use_system_proxy" />
-          </a-form-item>
-
-          <a-form-item :label="t('settings.microphone_device')">
-            <a-flex gap="small" align="center">
-              <a-select v-model:value="settingForm.data.microphone_device" :options="microphoneDeviceOptions"
-                style="width: 100%;" />
-              <a-tooltip :title="t('common.refresh')">
-                <a-button type=text size="small" :loading="refreshingMics" @click="refreshMics">
-                  <Refresh />
-                </a-button>
-              </a-tooltip>
-            </a-flex>
           </a-form-item>
 
           <a-form-item :label="t('settings.output_folder')">

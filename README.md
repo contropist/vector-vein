@@ -1,115 +1,137 @@
- [English](README_en.md) | 简体中文
+English | [简体中文](README_zh.md)
 
- [![向量脉络](resources/images/vector-vein-with-text-primary-zh.svg)](https://vectorvein.com)
+[![VectorVein](resources/images/vector-vein-with-text-primary-en.svg)](https://vectorvein.ai)
 
-# 🔀 向量脉络 VectorVein
+# 🔀 VectorVein
 
-利用 AI 的力量构建您的个人知识库+自动化工作流程。
+Build your automation workflow with the power of AI and your personal knowledge base.
 
-无需编程，只需拖拽即可创建强大的工作流，自动化所有任务。
+Create powerful workflows with just drag and drop, without any programming.
 
- [![在线版向量脉络](resources/images/demo-zh.gif)](https://github.com/AndersonBY/vector-vein)
+[![Online Version of VectorVein](resources/images/demo-en.gif)](https://github.com/AndersonBY/vector-vein)
 
-向量脉络是受到 [LangChain](https://github.com/hwchase17/langchain) 以及 [langflow](https://github.com/logspace-ai/langflow) 的启发而开发的无代码 AI 工作流软件，旨在结合大语言模型的强大能力并让用户通过简单的拖拽即可实现各类日常工作流的智能化和自动化。
+VectorVein is a no-code AI workflow software inspired by [LangChain](https://github.com/hwchase17/langchain) and [langflow](https://github.com/logspace-ai/langflow), designed to combine the powerful capabilities of large language models and enable users to easily achieve intelligent and automated workflows for various daily tasks.
 
-## 🌐 在线体验
+## 🌐 Online Experience
 
-您可以在 [这里](https://vectorvein.com) 体验向量脉络的在线版本，无需下载安装。
+You can experience VectorVein's online version [here](https://vectorvein.ai/en), with no need to download or install.
 
-官方网站 [在线文档](https://vectorvein.com/help/docs/introduction)
+Official website [Online Documentation](https://vectorvein.ai/help/docs/introduction)
 
-## 📦 安装及配置
+## 📦 Installation and Configuration
 
-### 安装
+### Installation
 
-在 [Release 页下载](https://github.com/AndersonBY/vector-vein/releases/) 后打开 VectorVein 软件，初次打开时程序会在安装目录下创建 data 文件夹，用于存放数据库及静态文件资源。
+After downloading VectorVein from [Release](https://github.com/AndersonBY/vector-vein/releases/), the program will create a "data" folder in the installation directory to store the database and static file resources.
 
-软件采用了 pywebview 搭建，基于 webview2 内核，因此需要安装 webview2 运行时，如果出现软件无法打开，可能需要手动下载 webview2 运行时，下载地址： [https://developer.microsoft.com/zh-cn/microsoft-edge/webview2/](https://developer.microsoft.com/zh-cn/microsoft-edge/webview2/)
+VectorVein is built using pywebview, based on the webview2 kernel, so you need to install the webview2 runtime. If the software cannot be opened, you may need to download the webview2 runtime manually from [https://developer.microsoft.com/en-us/microsoft-edge/webview2/](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)
 
-### 配置
+### Configuration
 
-#### 远程大语言模型接口配置
+Most workflows and agents in the software involve the use of AI large language models, so you should at least provide a usable configuration for a large language model. For workflows, you can see which large language models are being used in the interface, as shown in the image below.
 
-软件正常打开后点击打开设置按钮，请在 `大语言模型` 标签页填入 OpenAI/Moonshot/智谱 AI/Anthropic 的 API Key 以使用非本地的 AI 功能。
+![LLM used in workflow](resources/images/workflow-llm-use-en.jpg)
 
-![LLM 设置](resources/images/settings1-zh.jpg)
+#### Remote Large Language Model Interface Configuration
 
-#### 本地大语言模型接口配置
+After the software opens normally, click the settings button, and enter the API Key for OpenAI/Moonshot/Zhipu AI/Anthropic in the "Large Language Models" tab to use non-local AI features.
 
-如果使用本地大语言模型在 `本地大语言模型` 标签页填入本地的模型配置信息。目前支持 OpenAI 兼容的接口，如 LM-Studio、Ollama、vLLM 等。
+![LLM Settings](resources/images/settings1-en.jpg)
 
-![本地 LLM 设置](resources/images/settings2-zh.jpg)
+#### Local Large Language Model Interface Configuration
 
-> LM-Studio 的 API Base 通常为 http://localhost:1234/v1/
+If using a local large language model, fill in the local model configuration information in the `Local Large Language Model` tab. Currently supports OpenAI-compatible interfaces, such as LM-Studio, Ollama, vLLM, etc.
+
+![Local LLM Settings](resources/images/settings2-en.jpg)
+
+> The API Base for LM-Studio is usually http://localhost:1234/v1/
 > 
-> Ollama 的 API Base 通常为 http://localhost:11434/v1/
+> The API Base for Ollama is usually http://localhost:11434/v1/
 >
-> 注意填写完配置后先点 `保存模型系列` 然后再点 `保存设置`。
+> After completing the configuration, click `Save Model Family` first, and then click `Save Settings`.
 
-#### 其它配置
+#### Speech Recognition Configuration
 
-如果需要用到邮件发送的功能请在 `邮件设置` 标签页填入邮箱信息。
+Currently, the speech recognition services of OpenAI/Deepgram are supported. For OpenAI services, you can use the same configuration as the large language model or set up a speech recognition service compatible with the OpenAI API (such as Groq).
 
-#### 关于本地的 Stable Diffusion API
+![Speech Recognition Configuration](resources/images/asr-settings1-en.jpg)
 
-为了能够使用您自己本地运行的 Stable Diffusion API，您需要在 webui-user.bat 的启动项加上参数 --api，即
+### Embedding Configuration
+
+When you need to perform vector searches using vector data, you have the option to use embedding services provided by OpenAI or configure local embedding services in the `Embedding Model` settings. Currently, supported local embedding services require you to set up [text-embeddings-inference](https://github.com/huggingface/text-embeddings-inference) yourself.
+
+![Local Embedding Settings](resources/images/embedding-settings1-en.jpg)
+
+### Shortcut Settings
+
+For ease of daily use, you can configure shortcuts to quickly initiate voice conversations with the Agent. By launching through the shortcut, you can directly interact with the Agent via speech recognition. It is important to ensure that the speech recognition service is correctly configured beforehand.
+
+**Include Screenshot** means that while starting the conversation, a screenshot of the screen will be taken and uploaded as an attachment to the conversation.
+
+![Shortcut Settings](resources/images/shortcut-settings1-en.jpg)
+
+### Notes
+
+#### About the local Stable Diffusion API
+
+To use your own local Stable Diffusion API, you need to add the parameter --api to the startup item of webui-user.bat, that is
 
 ```
 set COMMANDLINE_ARGS=--api
 ```
 
-## 💻 使用方式
+## 💻 Usage
 
-### 📖 基本概念
+### 📖 Basic Concepts
 
-一个工作流代表了一个工作任务流程，包含了输入、输出以及工作流的触发方式。你可以任意定义输入是什么，输出是什么，以及输入是如何处理并到达输出结果的。
+A workflow represents a work task process, including input, output, and how input is processed to reach the output result.
 
-几个例子：
+Examples:
 
--   **翻译工作流**，输入是一个英文的 Word 文档，输出也是 Word 文档，你可以设计工作流将输入的中文文档翻译后生成中文文档。
--   **思维导图工作流**，如果将翻译工作流的输出改为思维导图，那么你就可以得到一个读取英文 Word 文档并总结为中文思维导图的工作流。
--   **网络文章摘要工作流**，如果将思维导图工作流的输入改为网络文章的 URL，那么你就可以得到一个读取网络文章并总结为中文思维导图的工作流。
--   **客户差评自动分类工作流**，输入是一个包含差评内容的表格，并自定义需要分类的关键词，即可自动将差评分类，输出就是自动生成包含分类结果的 Excel 表格。
+- **Translation Workflow**: The input is an English Word document, and the output is also a Word document. You can design a workflow to translate the input Chinese document and generate a Chinese document output.
+- **Mind Map Workflow**: If the output of the translation workflow is changed to a mind map, you can get a workflow that reads an English Word document and summarizes it into a Chinese mind map.
+- **Web Article Summary Workflow**: If the input of the mind map workflow is changed to a URL of a web article, you can get a workflow that reads a web article and summarizes it into a Chinese mind map.
+- **Automatic Classification of Customer Complaints Workflow**: The input is a table containing complaint content, and you can customize the keywords that need to be classified, so that the complaints can be automatically classified. The output is an automatically generated Excel table containing the classification results.
 
-### 🔎 使用界面
+### 🔎 User Interface
 
-每个工作流都有一个**使用界面**和一个**编辑界面**，使用界面用于日常运行工作流，编辑界面用于编辑工作流。通常而言一个设计好的工作流您平时只需要在使用界面中运行即可，不需要再去编辑界面中修改。
+Each workflow has a **User Interface** and an **Editor Interface**. The user interface is used for daily workflow operations, and the editor interface is used for workflow editing. Usually, after designing a workflow, you only need to run it in the user interface and do not need to modify it in the editor interface.
 
-![使用界面](resources/images/user-interface1-zh.jpg)
+![User Interface](resources/images/user-interface1-en.jpg)
 
-使用界面如上所示，分为输入、输出、触发器 ( 通常是一个运行按钮 ) 三个部分。日常使用可以直接输入内容，点击运行按钮即可在输出看到结果。
+The user interface is shown above and is divided into three parts: input, output, and trigger (usually a run button). You can directly enter content for daily use, click the run button to see the output result.
 
-想查看运行过的工作流可以点击【工作流运行记录】，如下图所示。
+To view the executed workflow, click **Workflow Run Records**, as shown in the following figure.
 
-![工作流运行记录](resources/images/workflow-record-zh.jpg)
+![Workflow Run Records](resources/images/workflow-record-en.jpg)
 
-### ✏️ 创建工作流
+### ✏️ Creating a Workflow
 
-您可以添加我们提供的官方模板到自己的工作流中，也可以自己创建一个新的工作流。刚开始时建议先用官方模板熟悉一下工作流的使用。
+You can add our official templates to your workflow or create a new one. It is recommended to familiarize yourself with the use of workflows using official templates at the beginning.
 
-![工作流编辑界面](resources/images/editor-zh.jpg)
+![Workflow Editor Interface](resources/images/editor-en.jpg)
 
-工作流编辑界面如上图所示，顶部可以编辑名称、标签以及详细描述。左侧是工作流的节点列表，右侧是工作流的画布，您可以从左侧找到想要的节点拖拽到画布中，然后通过连线连接节点，形成工作流。
+The workflow editor interface is shown above. You can edit the name, tags, and detailed description at the top. The left side is the node list of the workflow, and the right is the canvas of the workflow. You can drag the desired node from the left side to the canvas, and then connect the node through the wire to form a workflow.
 
-您可以查看一个简易的 爬虫 + AI 总结思维导图工作流的 [创建教学](TUTORIAL.md) 。
+You can view a tutorial on creating a simple crawler + AI summary mind map workflow [here](TUTORIAL.md).
 
-还可以试一下这个 [在线互动教程](https://vectorvein.com/workspace/workflow/editor/tutorial) 。
+You can also try this [online interactive tutorial](https://vectorvein.ai/workspace/workflow/editor/tutorial).
 
-## 🛠️ 开发部署
+## 🛠️ Development and Deployment
 
-### 环境要求
+### Environment Requirements
 
-- 后端
+- Backend
   - Python 3.8 ~ Python 3.11
-  - 安装 [PDM](https://pdm.fming.dev/latest/#installation)
+  - [PDM](https://pdm.fming.dev/latest/#installation) installed
 
-- 前端
+- Frontend
   - Vue3
   - Vite
 
-### 项目开发
+### Project Development
 
-在 **backend** 目录下运行以下命令安装依赖：
+Run the following command in the **backend** directory to install dependencies:
 
 #### Windows
 ```bash
@@ -121,36 +143,40 @@ pdm install
 pdm install -G mac
 ```
 
-正常来说 PDM 会自动找到系统的 Python 并创建虚拟环境以及安装依赖。
+Normally, PDM will automatically find the system's Python and create a virtual environment and install dependencies.
 
-安装完成后运行以下命令启动后端开发服务即可看到运行效果：
+After installation, run the following command to start the backend development server and see the running effect:
 
 ```bash
 pdm run dev
 ```
 
-如果需要修改前端代码，需要在 **frontend** 目录下运行以下命令安装依赖：
+If you need to modify the frontend code, you need to run the following command in the **frontend** directory to install dependencies:
 
 ```bash
 pnpm install
 ```
 
-前端依赖安装完成后需要将前端代码编译到后端的静态文件目录中，项目已提供了快捷指令，在 **backend** 目录下运行以下命令实现前端资源打包及拷贝：
+> When pulling the project code for the first time, you also need to run `pnpm install` to install the front-end dependencies.
+>
+> If you don't need to develop any front-end code at all, you can directly copy the `web` folder from the release version into the `backend` folder.
+
+After the frontend dependencies are installed, you need to compile the frontend code into the static file directory of the backend. A shortcut instruction has been provided in the project. Run the following command in the **backend** directory to pack and copy the frontend resources:
 
 ```bash
 pdm run build-front
 ```
 
-### 软件打包
+### Software Packaging
 
-项目采用 pyinstaller 进行打包，在 **backend** 目录下运行以下命令即可打包成可执行文件：
+The project uses pyinstaller for packaging. Run the following command in the **backend** directory to package it into an executable file:
 
 ```bash
 pdm run build
 ```
 
-打包完成后会在 **backend/dist** 目录下生成可执行文件。
+After packaging, the executable file will be generated in the**backend/dist** directory.
 
-## 📄 协议
+## 📄 License
 
-向量脉络是一个开源的软件，支持个人非商业使用，具体协议请参考 [LICENSE](LICENSE.md) 。
+VectorVein is an open-source software that supports personal non-commercial use. Please refer to [LICENSE](LICENSE.md) for specific agreements.

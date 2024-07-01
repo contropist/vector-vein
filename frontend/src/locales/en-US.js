@@ -2,7 +2,7 @@
  * @Author: Bi Ying
  * @Date:   2022-05-24 13:48:55
  * @Last Modified by:   Bi Ying
- * @Last Modified time: 2024-06-30 03:51:45
+ * @Last Modified time: 2024-07-01 18:54:57
  */
 export default {
   lang: 'English',
@@ -1121,6 +1121,7 @@ export default {
           'to_email': 'To email',
           'subject': 'Subject',
           'content_html': 'Content HTML',
+          'attachments': 'Attachments',
         },
         Document: {
           'title': 'Document',
@@ -1619,7 +1620,7 @@ export default {
     },
   },
   settings: {
-    'llms': 'Language Models',
+    'llms': 'Remove LLMs',
     'other': 'Other',
     'open': 'Open setting',
     'close': 'Close setting',
@@ -1651,8 +1652,8 @@ export default {
     'model_rpm': 'RPM',
     'model_concurrent': 'Concurrency',
     'model_max_tokens': 'Context length',
-    'model_function_calling': 'Support function calling',
-    'model_native_multimodal': 'Support native multimodal',
+    'model_function_calling': 'Function calling',
+    'model_native_multimodal': 'Native multimodal',
     'add_model_family': 'Add model family',
     'add_model': 'Add model',
     'save_model_family': 'Save model family',

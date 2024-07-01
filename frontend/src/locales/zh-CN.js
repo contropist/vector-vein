@@ -2,7 +2,7 @@
  * @Author: Bi Ying
  * @Date:   2022-05-24 13:48:55
  * @Last Modified by:   Bi Ying
- * @Last Modified time: 2024-06-30 03:51:33
+ * @Last Modified time: 2024-07-01 15:59:57
  */
 export default {
   lang: '中文',
@@ -1121,6 +1121,7 @@ export default {
           'to_email': '收件人',
           'subject': '主题',
           'content_html': '内容（HTML）',
+          'attachments': '附件',
         },
         Document: {
           'title': '文档',
@@ -1619,7 +1620,7 @@ export default {
     },
   },
   settings: {
-    'llms': '大语言模型',
+    'llms': '远程大语言模型',
     'other': '其他',
     'open': '打开设置',
     'close': '关闭设置',
